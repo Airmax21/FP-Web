@@ -133,7 +133,6 @@
     <section id="regpg" class="sec1 text-center" style="color: #fff;">
         <div class="overlay">
             <div class="logbox">
-
                 <h2>Register</h2>
                 <form method="POST">
                     <p>Username</p>
@@ -145,6 +144,7 @@
                     <p>Password Confirmation</p>
                     <input type="password" name="confirm" placeholder="******">
                     <h5 class="text-danger"><?php echo $output;?></h5>
+                    <p class="textkecil">Dengan membuat akun berarti anda setuju dengan <a class="textkecil" href="term.php">KEBIJAKAN KAMI</a></p>
                     <input type="submit" name="submit" value="Sign Up">
                 </form>
             </div>
