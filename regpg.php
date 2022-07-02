@@ -1,3 +1,37 @@
+<?php
+    include 'config.php';
+    $output = "";
+    if(isset($_POST['submit'])){
+        $username = $_POST['username'];
+        $pass = md5($_POST['pass']);
+        $email = $_POST['email'];
+        if($_POST['pass'] == $_POST['confirm']){
+            $sql = "SELECT * FROM users WHERE email='$email'";
+            $result = mysqli_query($conn,$sql);
+            if (!$result->num_rows > 0) {
+                $sql = "SELECT * FROM users WHERE username='$username'";
+                $result = mysqli_query($conn,$sql);
+                if (!$result->num_rows > 0) {
+                    $sql = "INSERT INTO users(pw,email,username) VALUES ('$pass','$email','$username')";
+                    $result = mysqli_query($conn,$sql);
+                    if($result){
+                        echo "<script>alert('Akun telah berhasil dibuat say!')</script>";
+                    }
+                }
+                else{
+                    $output = "Username dah terdaftar say";
+                }
+            }
+            else{
+                $output = "Email dah terdaftar say";
+            }
+        }
+        else{
+            $output = "Typo say";
+        }
+    }
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -101,16 +135,17 @@
             <div class="logbox">
 
                 <h2>Register</h2>
-                <form>
+                <form method="POST">
                     <p>Username</p>
-                    <input type="text" name="" placeholder="Enter Username">
+                    <input type="text" name="username" placeholder="Enter Username">
                     <p>Email</p>
-                    <input type="text" name="" placeholder="Enter Email">
+                    <input type="text" name="email" placeholder="Enter Email">
                     <p>Password</p>
-                    <input type="password" name="" placeholder="******">
+                    <input type="password" name="pass" placeholder="******">
                     <p>Password Confirmation</p>
-                    <input type="password" name="" placeholder="******">
-                    <input type="submit" name="" value="Sign Up"><a href="loginpg.html"></a>
+                    <input type="password" name="confirm" placeholder="******">
+                    <h5 class="text-danger"><?php echo $output;?></h5>
+                    <input type="submit" name="submit" value="Sign Up">
                 </form>
             </div>
         </div>
