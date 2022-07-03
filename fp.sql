@@ -1,5 +1,5 @@
 create database dbFP;
-use dbFP
+use dbFP;
 create table users(
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     pw varchar (200) NOT NULL,
@@ -11,12 +11,13 @@ create table users(
 create table video(
     id int NOT NULL PRIMARY KEY AUTO_INCREMENT,
     name VARCHAR(200) NOT NULL,
-    descr VARCHAR(200) NOT NULL,
+    descr VARCHAR(2000) NOT NULL,
     rate INT NOT NULL,
     watch int not null,
     path varchar(1000) not null,
     CoverLandscape varchar(1000),
     CoverPotrait varchar(1000),
+    upload datetime default now(),
     INDEX(name,CoverLandscape,CoverPotrait)
 );
 
@@ -51,3 +52,6 @@ create table theAdmin(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
     pw VARCHAR (10)
 );
+
+insert into video(name,descr,rate,path,coverlandscape,coverpotrait) VALUES
+('Kimi No Nawa','Menceritakan kedua anak SMA bernama Mitsuha dan Taki yang tidak mengenal satu sama lainnya. Tapi suatu malam, mereka tiba-tiba bertukar tempat. Mitsuha terbangun di tubuh Taki, dan dia di dalam tubuhnya. Kejadian aneh ini terus terjadi secara acak, dan keduanya harus menyesuaikan hidup mereka di sekitar satu sama lain.',9.12,'assets/movie/kiminonawa.mkv','assets/movie/kiminonawaland.jpg','assets/movie/kiminonawapotr.jpg')
