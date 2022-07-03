@@ -18,6 +18,30 @@
     border-radius: 5px;
 }
 
+/*
+.pp{
+    position: static;
+    
+    margin-left: 20%;
+    justify-content: right;
+}
+
+.avanav{
+    position: static;
+    object-fit: cover;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+
+.navtext{
+    color: #f1f1f1;
+    margin-right: 20px;
+    display: inline-block;
+}
+*/
+
 /* HOME */
 .sec1 {
     background-image: url('../img/bgg.jpg');
@@ -253,3 +277,47 @@
     background-color: DodgerBlue !important; 
     color: #ffffff; 
   }
+
+footer{
+    padding: 40px;
+    background-color: #17181a;
+}
+
+.team{
+    text-align: center;
+    color: #f1f1f1;
+    font-style: italic;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.card{
+    border: none;
+    background: transparent;
+    width: 193.3px;
+    height: 200px;
+    margin: 30px;
+}
+
+.avaimg{
+    margin-bottom: 15px;
+    object-fit: cover;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+}
+
+.iqb{
+    object-position: 100% 25%;
+}
+
+.avatext{
+    color: #f1f1f1;
+    text-align: center;
+    font-style: italic;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+.link__ig a{
+    text-decoration: none;
+    color: #fff;
+}
