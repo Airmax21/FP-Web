@@ -54,4 +54,4 @@ create table theAdmin(
 );
 
 insert into video(name,descr,rate,path,coverlandscape,coverpotrait) VALUES
-('Kimi No Nawa','Menceritakan kedua anak SMA bernama Mitsuha dan Taki yang tidak mengenal satu sama lainnya. Tapi suatu malam, mereka tiba-tiba bertukar tempat. Mitsuha terbangun di tubuh Taki, dan dia di dalam tubuhnya. Kejadian aneh ini terus terjadi secara acak, dan keduanya harus menyesuaikan hidup mereka di sekitar satu sama lain.',9.12,'assets/movie/kiminonawa.mkv','assets/movie/kiminonawaland.jpg','assets/movie/kiminonawapotr.jpg')
+('Kimi No Nawa','Menceritakan kedua anak SMA bernama Mitsuha dan Taki yang tidak mengenal satu sama lainnya. Tapi suatu malam, mereka tiba-tiba bertukar tempat. Mitsuha terbangun di tubuh Taki, dan dia di dalam tubuhnya. Kejadian aneh ini terus terjadi secara acak, dan keduanya harus menyesuaikan hidup mereka di sekitar satu sama lain.',9.12,'assets/movie/kiminonawa.mkv','assets/img/kiminonawaland.jpg','assets/img/kiminonawapotr.jpg')
