@@ -25,7 +25,7 @@
 }
 .sec1 {
     /* color: fff; */
-    background-image: url('../img/bgg.jpg');
+    background-image: url('../assets/img/bgg.jpg');
     background-size: cover;
     width: auto;
     height: 800px;
