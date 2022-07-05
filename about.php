@@ -1,41 +1,23 @@
-<?php
-    include 'config.php';
-    session_start();
-    $output = "";
-    if(isset($_SESSION['username'])){
-        header("Location:home.php");
-    }
-
-    if(isset($_POST['submit'])){
-        $pass = md5($_POST['pass']);
-        $email = $_POST['email'];
-        $sql = "SELECT * FROM users WHERE (username='$email' OR email='$email') AND pw='$pass';";
-        $result = mysqli_query($conn,$sql);
-        if($result->num_rows > 0){
-            $row = mysqli_fetch_assoc($result);
-            $_SESSION['username'] = $row['username'];
-            header("Location:home.php");
-        }
-        else{
-            $output = "Username atau password salah yang";
-        }
-    }
-?>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>About</title>
     <link rel="icon" type="image/x-icon" href="assets/img/icon.png">
+    <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/regpg.css">
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/home.css">
+
 </head>
-<body>
-     <!-- NAVBAR -->
-     <nav id="navigation" class="navbar navbar-expand-lg navbar-dark fixed-top">
+
+<body class="bg-dark">
+
+    <!-- NAVBAR -->
+    <nav id="navigation" class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container-fluid">
             <ul class="navbar-nav mb-2">
                 <li class="nav-item">
@@ -111,42 +93,59 @@
         </div>
     </nav>
     <!-- END NAVBAR -->
+    <div style="margin-top: 100px;">
+    <p class="team fs-2">Our Team</p>
+    <div class="container-fluid">
+        <div class="row px-1 link__ig d-flex" style="justify-content: center;">
+            <div class="card col-sm-2">
+                <img class="avaimg mx-auto" src="assets/img/zilan.JPG" alt="">
+                <p class="avatext">Muhammad Zhillan Zaini</p>
+                <p class="avatext">20.11.3678</p>
+                <a class="text-center" href="https://www.instagram.com/muhammadzhillan/">@muhammadzhillan</a>
+            </div>
+        
+            <div class="card col-sm-2">
+                <img class="avaimg mx-auto iqb" src="assets/img/iqbal.jpeg" alt="">
+                <p class="avatext">Ahmad Iqbal Agyan</p>
+                <br>
+                <p class="avatext">20.11.3687</p>
+                <a class="text-center" href="https://www.instagram.com/iqbal_agyan/">@iqbal_agyan</a>
+            </div>
+    
+            <div class="card col-sm-2">
+                <img class="avaimg mx-auto" src="assets/img/anam.jpeg" alt="">
+                <p class="avatext">Khoerul Anam</p>
+                <br>
+                <p class="avatext">20.11.3715</p>
+                <a class="text-center" href="https://instagram.com/khoerul_.anam">@khoerul_.anam</a>
+            </div>
+    
+            <div class="card col-sm-2">
+                <img class="avaimg mx-auto" src="assets/img/ilham.jpeg" alt="">
+                <p class="avatext">Mohammad Ilham Hanafi</p>
+                <p class="avatext">20.11.3722</p>
+                <a class="text-center" href="Instagram.com/milhamhnf">@milhamhnf</a>
+            </div>
 
-    <section id="logpg" class="sec1 text-center" style="color: #fff;">
-        <div class="overlay">
-        <div class="logbox">
-            <h2>Login</h2>
-            <form method="POST">
-                <p>Email</p>
-                <input type="text" name="email" placeholder="Enter Email or Username">
-                <p>Password</p>
-                <input type="password" name="pass" placeholder="******">
-                <input type="submit" name="submit" value="Sign In">
-                <h5 class="text-danger"><?php echo $output;?></h5>
-                <a href="#">Forget Password</a>
-            </form>
+            <div class="card col-sm-2">
+                <img class="avaimg mx-auto" src="assets/img/ojan.jpeg" alt="">
+                <p class="avatext">Fauzan Baehaqi</p>
+                <br>
+                <p class="avatext">20.11.3727</p>
+                <a class="text-center" href="https://www.instagram.com/fauzan.baehaqi/">@fauzan.baehaqi</a>
+            </div>
         </div>
+        
     </div>
-    </section>
+</div>
+    <!-- JAVASCRIPT -->
     <script src="assets/js/bootstrap.min.js"></script>
     <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/navbar.js"></script>   
+    <script src="assets/js/navbar.js"></script>
     <script src="assets/js/search.js"></script>
-    <script>
-        var search = ['asdf','asdf','asf'];
-        <?php
-    $sql = "SELECT name FROM video";
-    $result = mysqli_query($conn,$sql);
-    if($result->num_rows>0){
-      while($row = $result->fetch_assoc()){
-        $nama = $row['name'];
-        echo "search.push('$nama');";
-      }
-    }
-    ?>
-    autocomplete(document.getElementById("myInput"), search);
-    </script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
+
 <div id="copyright">
     <div class="wrapper">
         &copy; Copyright <b>ByMamaz</b> All Rights Reserved.

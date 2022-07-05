@@ -40,7 +40,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Register</title>
-
+    <link rel="icon" type="image/x-icon" href="assets/img/icon.png">
     <!-- BOOTSTRAP -->
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
     <!-- CSS REG -->
@@ -54,10 +54,10 @@
         <div class="container-fluid">
             <ul class="navbar-nav mb-2">
                 <li class="nav-item">
-                    <a class="nav-link" aria-current="page" href="#">Window.tv</a>
+                    <a class="nav-link" aria-current="page" href="home.php">ROXO</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link " href="#">Home</a>
+                    <a class="nav-link " href="home.php">Home</a>
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -65,17 +65,10 @@
                         Menu
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <li><a class="dropdown-item" href="#home">Home</a></li>
-                        <li><a class="dropdown-item" href="#">Recent</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#genre">Genre</a></li>
-                        <li><a class="dropdown-item" href="#trending">Trending</a></li>
-                        <li><a class="dropdown-item" href="#NewRealeases">New Realeses</a></li>
-                        <li><a class="dropdown-item" href="#image">Image</a></li>
+                        <li><a class="dropdown-item" href="recent.php">Recent</a></li>
+                        <li><a class="dropdown-item" href="trending.php">Trending</a></li>
+                        <li><a class="dropdown-item" href="new.php">New Realeses</a></li>
                     </ul>
-
                 </li>
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"
@@ -83,47 +76,53 @@
                         Genre
                     </a>
                     <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-
-                        <li><a class="dropdown-item" href="#">Action</a></li>
-
-                        <li><a class="dropdown-item" href="#">Adventure</a></li>
-
-                        <li><a class="dropdown-item" href="#">Animals</a></li>
-                        <li><a class="dropdown-item" href="#">Animation</a></li>
-                        <li><a class="dropdown-item" href="#">Avant Garde</a></li>
-                        <li><a class="dropdown-item" href="#">Image</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Boys Love</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
-                        <li><a class="dropdown-item" href="#">Cars</a></li>
-                        <li><a class="dropdown-item" href="#">Comedy</a></li>
-                        <li><a class="dropdown-item" href="#">Crime</a></li>
-                        <li>
-                            <hr class="dropdown-divider">
-                        </li>
+                        <li><a class="dropdown-item" href="genre.php?genre=action">Action</a></li>
+                        <li><a class="dropdown-item" href="genre.php?genre=adventure">Adventure</a></li>
+                        <li><a class="dropdown-item" href="genre.php?genre=comedy">Comedy</a></li>
+                        <li><a class="dropdown-item" href="genre.php?genre=drama">Drama</a></li>
+                        <li><a class="dropdown-item" href="genre.php?genre=ecchi">Ecchi</a></li>
+                        <li><a class="dropdown-item" href="genre.php?genre=isekai">Isekai</a></li>
+                        <li><a class="dropdown-item" href="genre.php?genre=magic">Magic</a></li>
+                        <li><a class="dropdown-item" href="genre.php?genre=romance">Romance</a></li>
+                        <li><a class="dropdown-item" href="genre.php?genre=school">School</a></li>
+                        <li><a class="dropdown-item" href="genre.php?genre=sliceoflife">Slice Of Life</a></li>
                     </ul>
-
+                <li class="nav-item">
+                    <a class="nav-link " href="about.php">About</a>
+                </li>
+                    </ul>
                 </li>
             </ul>
+            <!-- end dm -->
 
             <div class="search-center">
-                <form autocomplete="off" action="/action_page.php">
+                <form autocomplete="off" method="POST">
                     <div class="autocomplete" style="width:300px;">
-                        <input id="myInput" class="form-control me-2" type="text" name="myCountry" placeholder="Search">
+                        <input id="myInput" class="form-control me-2" type="search" name="search" placeholder="Search">
                     </div>
-
-                    <input type="submit" hidden>
+                    <input type="submit" name="searchsub" hidden>
                 </form>
             </div>
-
+            <div class="d-flex pp">
+                <?php
+                    if(!isset($username)){
+                        echo '<button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"
+                        href="loginpg.php">SIGN IN</a> </button>
+                        <button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"
+                        href="regpg.php">CREATE ACCOUNT</a> </button>';
+                    }
+                    else{
+                        
+                        echo "<p class='navtext mx-end my-auto'>$username</p>
+                        <img class='avanav mx-end' src='$foto'>";
+                    }
+                ?>
+            <!-- <button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"
+                    href="loginpg.php">SIGN IN</a> </button>
             <button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"
-                    href="loginpg.html">SIGN IN</a> </button>
-            <button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"
-                    href="regpg.html">CREATE ACCOUNT</a> </button>
+                    href="regpg.php">CREATE ACCOUNT</a> </button> -->
+                    
+            </div>
         </div>
     </nav>
     <!-- END NAVBAR -->
@@ -156,6 +155,24 @@
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/navbar.js"></script>
     <script src="assets/js/search.js"></script>
+    <script>
+        var search = ['asdf','asdf','asf'];
+        <?php
+    $sql = "SELECT name FROM video";
+    $result = mysqli_query($conn,$sql);
+    if($result->num_rows>0){
+      while($row = $result->fetch_assoc()){
+        $nama = $row['name'];
+        echo "search.push('$nama');";
+      }
+    }
+    ?>
+    autocomplete(document.getElementById("myInput"), search);
+    </script>
 </body>
-
+<div id="copyright">
+    <div class="wrapper">
+        &copy; Copyright <b>ByMamaz</b> All Rights Reserved.
+    </div>
+</div>
 </html>

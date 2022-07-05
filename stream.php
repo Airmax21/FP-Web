@@ -1,37 +1,30 @@
 <?php
     include 'config.php';
-    session_start();
-    $output = "";
-    if(isset($_SESSION['username'])){
-        header("Location:home.php");
+    $id = $_GET['id'];
+    $sql = "SELECT * FROM video WHERE id=$id";
+    $result  = mysqli_query($conn,$sql);
+    if($result->num_rows>0){
+        $row = $result->fetch_assoc();
+        $path = $row['path'];
+        $name = $row['name'];
+        $watch = $row['watch'];
+        $cover = $row['CoverPotrait'];
+        $descr = $row['descr'];
     }
-
-    if(isset($_POST['submit'])){
-        $pass = md5($_POST['pass']);
-        $email = $_POST['email'];
-        $sql = "SELECT * FROM users WHERE (username='$email' OR email='$email') AND pw='$pass';";
-        $result = mysqli_query($conn,$sql);
-        if($result->num_rows > 0){
-            $row = mysqli_fetch_assoc($result);
-            $_SESSION['username'] = $row['username'];
-            header("Location:home.php");
-        }
-        else{
-            $output = "Username atau password salah yang";
-        }
-    }
+    $watch+=1;
+    $sql = "UPDATE video SET watch=$watch WHERE id=$id";
+    $result  = mysqli_query($conn,$sql);
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Streaming</title>
     <link rel="icon" type="image/x-icon" href="assets/img/icon.png">
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/regpg.css">
+    <link rel="stylesheet" href="assets/css/stream.css">
 </head>
 <body>
      <!-- NAVBAR -->
@@ -112,28 +105,71 @@
     </nav>
     <!-- END NAVBAR -->
 
-    <section id="logpg" class="sec1 text-center" style="color: #fff;">
-        <div class="overlay">
-        <div class="logbox">
-            <h2>Login</h2>
-            <form method="POST">
-                <p>Email</p>
-                <input type="text" name="email" placeholder="Enter Email or Username">
-                <p>Password</p>
-                <input type="password" name="pass" placeholder="******">
-                <input type="submit" name="submit" value="Sign In">
-                <h5 class="text-danger"><?php echo $output;?></h5>
-                <a href="#">Forget Password</a>
-            </form>
+    <section id="stream" class="sec1 text-center" style="color: #fff;">
+        <div class="container-fluid">
+        <div class="tv row">
+            <div class="col-md-8">
+                <video class="player" controls>
+                    <source src="<?php echo $path?>" type="video/mp4">
+                  Your browser does not support the video tag.
+                  </video>
+            </div>
+        </div>
+        <div class="row descbox">
+            <div class="play-title">
+                <p><?php echo $name?></p>
+            </div>
+            <div class="view">
+                <i class="fa fa-eye"><?php echo $watch?> views</i> 
+                <hr>
+            </div>
+            <div class="poster">
+                <img src="<?php echo $cover?>">
+                <span class="desc">
+                    <label class="fs-4" for="desc">Deskripsi :</label>
+                        <p>
+                        <?php echo $descr?>
+                        </p>
+                </span>
+            </div>
+        </div>
+    </div>
+        <div class="container-fluid">
+            <div class="upnext">
+            <p class="upnext-title">Up Next :</p>
+            <?php
+                $sql = "SELECT * FROM video WHERE id!=$id";
+                $result  = mysqli_query($conn,$sql);
+                if($result->num_rows>0){
+                    $batas = 0;
+                    while($row = $result->fetch_assoc() and $batas<=5){
+                        $id = $row['id'];
+                        $name = $row['name'];
+                        $watch = $row['watch'];
+                        $cover = $row['CoverPotrait'];
+                        echo "<a href='stream.php?id=$id 'style='text-decoration: none;'><div class='watchnext d-flex justify-content-start'>
+                        <img src='$cover'>
+                        <div class='p-2 text-white'>
+                            <p class='next-title'>$name</p>
+                            <div class='view'>
+                                <i class='fa fa-eye'>$watch views</i> 
+                            </div>
+                            </div>
+                        </div></a>";
+                        $batas+=1;
+                    }
+                }
+            ?>
         </div>
     </div>
     </section>
     <script src="assets/js/bootstrap.min.js"></script>
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
     <script src="assets/js/jquery.js"></script>
     <script src="assets/js/navbar.js"></script>   
     <script src="assets/js/search.js"></script>
     <script>
-        var search = ['asdf','asdf','asf'];
+        var search = [];
         <?php
     $sql = "SELECT name FROM video";
     $result = mysqli_query($conn,$sql);

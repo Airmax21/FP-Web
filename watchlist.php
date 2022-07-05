@@ -1,41 +1,39 @@
 <?php
     include 'config.php';
     session_start();
-    $output = "";
     if(isset($_SESSION['username'])){
-        header("Location:home.php");
-    }
-
-    if(isset($_POST['submit'])){
-        $pass = md5($_POST['pass']);
-        $email = $_POST['email'];
-        $sql = "SELECT * FROM users WHERE (username='$email' OR email='$email') AND pw='$pass';";
+        $username = $_SESSION['username'];
+        $sql = "SELECT * FROM users WHERE username='$username'";
         $result = mysqli_query($conn,$sql);
-        if($result->num_rows > 0){
-            $row = mysqli_fetch_assoc($result);
-            $_SESSION['username'] = $row['username'];
-            header("Location:home.php");
+        if($result->num_rows>0){
+            $row = $result->fetch_assoc();
+            $id = $row['id'];
         }
-        else{
-            $output = "Username atau password salah yang";
-        }
+    }
+    else{
+        echo "<script>
+        alert('Silahkan login say sebelum masuk halaman ini');
+        window.location.href='home.php';
+        </script>";
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login</title>
+    <title>Watchlist</title>
     <link rel="icon" type="image/x-icon" href="assets/img/icon.png">
+    <!-- bootstrap -->
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
-    <link rel="stylesheet" href="assets/css/regpg.css">
+    <!-- css  -->
+    <link rel="stylesheet" href="assets/css/list.css">
 </head>
+
 <body>
-     <!-- NAVBAR -->
-     <nav id="navigation" class="navbar navbar-expand-lg navbar-dark fixed-top">
+<nav id="navigation" class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container-fluid">
             <ul class="navbar-nav mb-2">
                 <li class="nav-item">
@@ -110,29 +108,63 @@
             </div>
         </div>
     </nav>
-    <!-- END NAVBAR -->
-
-    <section id="logpg" class="sec1 text-center" style="color: #fff;">
-        <div class="overlay">
-        <div class="logbox">
-            <h2>Login</h2>
-            <form method="POST">
-                <p>Email</p>
-                <input type="text" name="email" placeholder="Enter Email or Username">
-                <p>Password</p>
-                <input type="password" name="pass" placeholder="******">
-                <input type="submit" name="submit" value="Sign In">
-                <h5 class="text-danger"><?php echo $output;?></h5>
-                <a href="#">Forget Password</a>
-            </form>
+    <!-- GENRE LIST-->
+    <section class="product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- ACTION -->
+                    <section id="action">
+                        <div class="action__product" style="text-decoration: none;">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-8">
+                                    <div class="section-title">
+                                        <h4>Watchlist</h4>
+                                        <hr style="color: white;" width="850">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <?php
+                                    $sql = "SELECT * FROM video WHERE id in (SELECT movieID FROM watchlist WHERE users=$id)";
+                                    $result = mysqli_query($conn,$sql);
+                                    if($result->num_rows>0){
+                                        while($row = $result->fetch_assoc()){
+                                            $name = $row['name'];
+                                            $watch = $row['watch'];
+                                            $cover = $row['CoverPotrait'];
+                                            $rating = $row['rate'];
+                                            echo "<div class='col-lg-4 col-md-6 col-sm-6'>
+                                            <a href='stream.php?id=$id'><div class='product__item'>
+                                                <div class='product__item__pic set-bg'>
+                                                    <img src='$cover' width='229' height='325'>
+                                                    <div class='comment'><i class='fa fa-comments'></i>$rating</div>
+                                                    <div class='view'><i class='fa fa-eye'></i> $watch</div>
+                                                </div>
+                                                <div class='product__item__text'>
+                                                    <h5><a href='#'>$name</a></h5>
+                                                </div>
+                                            </div></a>
+                                        </div>";
+                                        }
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </section>
+                </div>
+            </div>
         </div>
-    </div>
-    </section>
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/navbar.js"></script>   
-    <script src="assets/js/search.js"></script>
-    <script>
+        </div>
+        <!-- END GENRE LIST -->
+
+        <!-- JS -->
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/js/navbar.js"></script>
+        <script src="assets/js/search.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script>
         var search = ['asdf','asdf','asf'];
         <?php
     $sql = "SELECT name FROM video";
