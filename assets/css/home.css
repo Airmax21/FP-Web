@@ -25,15 +25,6 @@ section #trending,
     background: rgb(63, 63, 70);
     border-radius: 5px;
 }
-
-/*
-.pp{
-    position: static;
-    
-    margin-left: 20%;
-    justify-content: right;
-}
-
 .avanav{
     position: static;
     object-fit: cover;
@@ -45,9 +36,20 @@ section #trending,
 
 .navtext{
     color: #f1f1f1;
+    margin-left: 20px;
     margin-right: 20px;
     display: inline-block;
+    overflow-x: hidden;
 }
+/*
+.pp{
+    position: static;
+    
+    margin-left: 20%;
+    justify-content: right;
+}
+
+
 */
 
 /* HOME */
@@ -70,6 +72,7 @@ section #trending,
 /* navbar search position */
 .search-center {
     margin: auto;
+    margin-right: 0;
 }
 
 .btn-outline-custom-sign-up {
@@ -128,6 +131,7 @@ section #trending,
 
 .media-element {
     color: #ffffff;
+    height: 350px;
     display: grid;
     grid-template-rows: min-content;
     gap: var(--_spacer);
@@ -140,7 +144,6 @@ section #trending,
 .media-element>img {
     inline-size: 100%;
     aspect-ratio: 16 / 9;
-
     object-fit: cover;
 }
 
@@ -195,8 +198,7 @@ section #trending,
 }
 
 .carousel-item img {
-    object-fit: scale-down;
-    object-position: 15% 100%;
+    object-fit: cover;
     width: 82.5vw;
     height: 90vh;
 }
@@ -210,7 +212,7 @@ section #trending,
     left: 0;
     right: 0;
     background: black;
-    opacity: 0.2;
+    opacity: 0.6;
     z-index: 1;
 }
 
@@ -219,7 +221,6 @@ section #trending,
     display: inline-block;
     margin-bottom: 0;
 }
-
 .title p {
     margin-bottom: 0;
 }
@@ -289,6 +290,14 @@ input[type=submit] {
 footer {
     padding: 40px;
     background-color: #17181a;
+}
+
+.pp{
+    position: static;
+    width: 500px;
+    max-height: 45px;
+    overflow: hidden;
+    justify-content: right;
 }
 
 .team {

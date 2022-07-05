@@ -18,13 +18,8 @@
     border-radius: 5px;
 }
 
-
-/* navbar search position */
-.search-center {
-    margin: auto;
-}
+/* HOME */
 .sec1 {
-    /* color: fff; */
     background-image: url('../img/bgg.jpg');
     background-size: cover;
     width: auto;
@@ -33,11 +28,16 @@
 
 }
 
-.overlay {
+.overlay{
     background: rgba(33, 34, 36, 0.82);
     overflow: hidden;
     height: 100%;
     z-index: 1;
+}
+
+/* navbar search position */
+.search-center {
+    margin: auto;
 }
 
 .btn-outline-custom-sign-up {
@@ -50,7 +50,6 @@
     font-size: 30px;
 }
 
-
 .btn-outline-custom-light {
     background-color: transparent;
     color: #fff;
@@ -59,18 +58,11 @@
 
 }
 
-.btn-outline-custom-sign-up :hover {
-    background-color: #C600FF;
-    color: #fff;
-    padding-left: 70px;
-    padding-right: 70px;
-    padding-top: 20px;
-    padding-bottom: 20px;
-    font-size: 30px;
-}
-.textkecil{
-    font-size: 8pt;
-}
+/* .btn-outline-custom-sign-up :hover {
+    background-color: #747175;
+} */
+
+/* btn-sign in */
 .btn-outline-custom-light:hover {
     background-color: transparent;
     color: #fff;
@@ -78,85 +70,127 @@
     padding-right: 30px;
 }
 
-body{
-    margin: 0;
-    padding: 0;
-    background: url(bg.jpg);
-    background-size: cover;
-    font-family: sans-serif;
+/* horizontal scroll */
+.media-scroller {
+    --_spacer: var(--size-3);
+    display: grid;
+    gap: var(--_spacer);
+    grid-auto-flow: column;
+    grid-auto-columns: 21%;
+
+    padding: 0 var(--_spacer) var(--_spacer);
+
+    overflow-x: auto;
+    overscroll-behavior-inline: contain;
 }
 
-.logbox{
+.media-scroller--with-groups {
+    grid-auto-columns: 80%;
+}
+
+.media-group {
+    display: grid;
+    gap: var(--_spacer);
+    grid-auto-flow: column;
+}
+
+.media-element {
+    color: #ffffff;
+    display: grid;
+    grid-template-rows: min-content;
+    gap: var(--_spacer);
+    padding: var(--_spacer);
+    background: #343a40;
+    border-radius: var(--radius-2);
+    box-shadow: var(--shadow-2);
+}
+
+.media-element>img {
+    inline-size: 100%;
+    aspect-ratio: 16 / 9;
+    
+    object-fit: cover;
+}
+
+.snaps-inline {
+    scroll-snap-type: inline mandatory;
+    scroll-padding-inline: var(--_spacer, 1rem);
+}
+
+.snaps-inline>* {
+    scroll-snap-align: start;
+}
+
+/* general styling */
+
+.container {
+    inline-size: min(100% - 4rem, 70rem);
+    margin-inline: auto;
+}
+
+.flow {
+    display: grid;
+    gap: var(--size-3);
+}
+
+.page-header {
+    padding-block: var(--size-9);
+    margin-block-end: var(--size-9);
+    background: var(--gradient-16);
+    color: var(--gray-0);
+    box-shadow: var(--shadow-2);
+}
+
+.page-title {
+    font-size: var(--font-size-fluid-3);
+}
+
+.page-subtitle {
+    font-size: var(--font-size-fluid-1);
+}
+
+.section-title {
+    padding-inline-start: var(--size-6);
+    margin-block: var(--size-9) var(--size-3);
+}
+
+.rating {
+    display: inline-flexbox;
+}
+
+.title-list {
+    z-index: 2;
+}
+
+.carousel-item img {
+    object-fit: scale-down;
+    object-position: 15% 100%;
+    width: 82.5vw;
+    height: 90vh;
+}
+
+.drk::after {
+    content: "";
+    display: block;
     position: absolute;
-    top: 60%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 350px;
-    height: 600px;
-    padding: 50px;
-    border-radius: 10px;
-    box-sizing: border-box;
-    background: rgba(0,0,0,.5);
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: black;
+    opacity: 0.6;
+    z-index: 1;
 }
 
-h2{
-    margin: 0;
-    padding: 10px 0 20px;
-    color: #efed40;
-    text-align: center;
+/* title */
+.title {
+    display: inline-block;
+    margin-bottom: 0;
 }
 
-.logbox p{
-    margin: 0;
-    padding: 0;
-    font-weight: bold;
-    color: #fff;
+.title p {
+    margin-bottom: 0;
 }
-
-.logbox input{
-    width: 100%;
-    margin-bottom: 20px;
-}
-
-.logbox input[type="text"],
-.logbox input[type="password"]{
-    border: none;
-    border-bottom: 1px solid #fff;
-    background: transparent;
-    outline: none;
-    height: 40px;
-    color: #fff;
-    font-size: 16px;
-}
-
-::placeholder{
-    color: rgba(255,255,255,.5);
-}
-
-.logbox input[type="submit"]{
-    border: none;
-    outline: none;
-    height: 40px;
-    color: #fff;
-    font-size: 16px;
-    background: #C600FF;
-    cursor: pointer;
-    border-radius: 20px;
-}
-
-.logbox input[type="submit"]:hover{
-    background: transparent;
-    color: #fff;
-}
-
-.logbox a{
-    color: #fff;
-    font-size: 14px;
-    font-weight: bold;
-    text-decoration: none;
-}
-
-
 
 /* SEARCH */
 * {
