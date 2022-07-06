@@ -10,10 +10,6 @@
             $foto=$row['foto'];
         }
     }
-    if(isset($_POST['searchsub'])){
-        $search=$_POST['search'];
-        header("Location:search.php?search=$search");
-    }
 ?>
 
 <!DOCTYPE html>
@@ -79,11 +75,11 @@
             <!-- end dm -->
 
             <div class="search-center">
-                <form autocomplete="off" method="POST">
+                <form autocomplete="off" method="GET" action="./search.php">
                     <div class="autocomplete" style="width:300px;">
                         <input id="myInput" class="form-control me-2" type="search" name="search" placeholder="Search">
                     </div>
-                    <input type="submit" name="searchsub">
+                    <input type="submit" name="searchsub" hidden>
                 </form>
             </div>
             <div class="d-flex pp">

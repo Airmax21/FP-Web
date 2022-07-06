@@ -1,10 +1,6 @@
 <?php
     include 'config.php';
     $genre = $_GET['genre'];
-    if(isset($_POST['searchsub'])){
-        $search=$_POST['search'];
-        header("Location:search.php?search=$search");
-    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -19,6 +15,7 @@
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
     <!-- css  -->
     <link rel="stylesheet" href="assets/css/list.css">
+    <link rel="stylesheet" href="assets/css/search.css">
 </head>
 
 <body>
@@ -69,7 +66,7 @@
             <!-- end dm -->
 
             <div class="search-center">
-                <form autocomplete="off" method="POST">
+                <form autocomplete="off" method="GET" action="./search.php">
                     <div class="autocomplete" style="width:300px;">
                         <input id="myInput" class="form-control me-2" type="search" name="search" placeholder="Search">
                     </div>

@@ -19,7 +19,7 @@ create table video(
     CoverLandscape varchar(1000),
     CoverPotrait varchar(1000),
     upload datetime default now(),
-    INDEX(name,CoverLandscape,CoverPotrait)
+    INDEX(name)
 );
 
 create table genre(
@@ -168,7 +168,7 @@ insert into video(name,descr,rate,path,coverlandscape,coverpotrait) VALUES
 8.58,
 'assets/movie/nogamenolife.mkv',
 'assets/img/cover/nogamenolifeland.jpg',
-'assets/img/cover/nogamenolifepotr.jpg')
+'assets/img/cover/nogamenolifepotr.jpg');
 
 insert into genre VALUES
 (1,'Drama'),

@@ -1,3 +1,6 @@
+<?php
+    include 'config.php';
+    ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -11,6 +14,7 @@
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/search.css">
 
 </head>
 
@@ -63,7 +67,7 @@
             <!-- end dm -->
 
             <div class="search-center">
-                <form autocomplete="off" method="POST">
+                <form autocomplete="off" method="GET" action="./search.php">
                     <div class="autocomplete" style="width:300px;">
                         <input id="myInput" class="form-control me-2" type="search" name="search" placeholder="Search">
                     </div>
@@ -144,6 +148,20 @@
     <script src="assets/js/navbar.js"></script>
     <script src="assets/js/search.js"></script>
     <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script>
+        var search = [];
+        <?php
+    $sql = "SELECT name FROM video";
+    $result = mysqli_query($conn,$sql);
+    if($result->num_rows>0){
+      while($row = $result->fetch_assoc()){
+        $nama = $row['name'];
+        echo "search.push('$nama');";
+      }
+    }
+    ?>
+    autocomplete(document.getElementById("myInput"), search);
+    </script>
 </body>
 
 <div id="copyright">
