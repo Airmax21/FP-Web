@@ -14,6 +14,10 @@
     $watch+=1;
     $sql = "UPDATE video SET watch=$watch WHERE id=$id";
     $result  = mysqli_query($conn,$sql);
+    if(isset($_POST['searchsub'])){
+        $search=$_POST['search'];
+        header("Location:search.php?search=$search");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -109,7 +113,7 @@
         <div class="container-fluid">
         <div class="tv row">
             <div class="col-md-8">
-                <video class="player" controls>
+                <video class="player" controls autoplay>
                     <source src="<?php echo $path?>" type="video/mp4">
                   Your browser does not support the video tag.
                   </video>

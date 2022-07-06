@@ -17,11 +17,13 @@ app.set('views', './');
 app.engine('php', phpExpress.engine);
 app.set('view engine', 'php');
 
+app.get('/',(req,res)=>{
+  res.redirect('home.php');
+})
 // routing all .php file to php-express
 app.all(/.+\.php$/, phpExpress.router);
 
 var server = app.listen(3000, function () {
-  var host = server.address().address;
   var port = server.address().port;
-  console.log('PHPExpress app listening at http://%s:%s', host, port);
+  console.log('PHPExpress app listening at localhost:', port);
 });

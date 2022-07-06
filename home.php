@@ -10,7 +10,7 @@
             $foto=$row['foto'];
         }
     }
-    if(isset($_POST['search'])){
+    if(isset($_POST['searchsub'])){
         $search=$_POST['search'];
         header("Location:search.php?search=$search");
     }
@@ -83,7 +83,7 @@
                     <div class="autocomplete" style="width:300px;">
                         <input id="myInput" class="form-control me-2" type="search" name="search" placeholder="Search">
                     </div>
-                    <input type="submit" name="searchsub" hidden>
+                    <input type="submit" name="searchsub">
                 </form>
             </div>
             <div class="d-flex pp">
@@ -141,7 +141,6 @@
         <div class="row ">
             <div class="col-sm-1"></div>
             <div class="col-sm-10">
-
                 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="false">
                     <div class="carousel-indicators">
                         <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0"
@@ -389,7 +388,7 @@
     <script src="assets/js/navbar.js"></script>
     <script src="assets/js/search.js"></script>
     <script>
-        var search = ['asdf','asdf','asf'];
+        var search = [];
         <?php
     $sql = "SELECT name FROM video";
     $result = mysqli_query($conn,$sql);

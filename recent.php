@@ -16,6 +16,10 @@
         window.location.href='home.php';
         </script>";
     }
+    if(isset($_POST['searchsub'])){
+        $search=$_POST['search'];
+        header("Location:search.php?search=$search");
+    }
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -164,7 +168,7 @@
         <script src="assets/js/search.js"></script>
         <script src="assets/js/bootstrap.bundle.min.js"></script>
         <script>
-        var search = ['asdf','asdf','asf'];
+        var search = [];
         <?php
     $sql = "SELECT name FROM video";
     $result = mysqli_query($conn,$sql);

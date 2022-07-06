@@ -20,6 +20,10 @@
             $output = "Username atau password salah yang";
         }
     }
+    if(isset($_POST['searchsub'])){
+        $search=$_POST['search'];
+        header("Location:search.php?search=$search");
+    }
 ?>
 
 <!DOCTYPE html>
@@ -133,7 +137,7 @@
     <script src="assets/js/navbar.js"></script>   
     <script src="assets/js/search.js"></script>
     <script>
-        var search = ['asdf','asdf','asf'];
+        var search = [];
         <?php
     $sql = "SELECT name FROM video";
     $result = mysqli_query($conn,$sql);
