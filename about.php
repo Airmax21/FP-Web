@@ -1,5 +1,15 @@
 <?php
     include 'config.php';
+    session_start();
+    if(isset($_SESSION['username'])){
+        $username = $_SESSION['username'];
+        $sql = "SELECT * FROM users WHERE username='$username' or email='$username'";
+        $result = mysqli_query($conn,$sql);
+        if($result->num_rows>0){
+            $row = $result->fetch_assoc();
+            $foto=$row['foto'];
+        }
+    }
     ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -15,6 +25,8 @@
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/home.css">
     <link rel="stylesheet" href="assets/css/search.css">
+    <link rel="stylesheet" href="assets/css/navbar.css">
+    <link rel="stylesheet" href="assets/css/footer.css">
 
 </head>
 
@@ -85,7 +97,8 @@
                     else{
                         
                         echo "<p class='navtext mx-end my-auto'>$username</p>
-                        <img class='avanav mx-end' src='$foto'>";
+                        <img class='avanav mx-end' src='$foto'><button class='btn btn-outline-danger mx-3' type='submit'><a class='text-decoration-none text-light'
+                        href='logout.php'>Log Out</a> </button> ";
                     }
                 ?>
             <!-- <button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"
@@ -102,6 +115,7 @@
     <div class="container-fluid">
         <div class="row px-1 link__ig d-flex" style="justify-content: center;">
             <div class="card col-sm-2">
+                <p class="avatext">Front-end & Database</p>
                 <img class="avaimg mx-auto" src="assets/img/zilan.JPG" alt="">
                 <p class="avatext">Muhammad Zhillan Zaini</p>
                 <p class="avatext">20.11.3678</p>
@@ -109,6 +123,8 @@
             </div>
         
             <div class="card col-sm-2">
+                <p class="avatext">Back-end</p>
+                <br>
                 <img class="avaimg mx-auto iqb" src="assets/img/iqbal.jpeg" alt="">
                 <p class="avatext">Ahmad Iqbal Agyan</p>
                 <br>
@@ -117,6 +133,7 @@
             </div>
     
             <div class="card col-sm-2">
+                <p class="avatext">Front-end & Typewriter</p>
                 <img class="avaimg mx-auto" src="assets/img/anam.jpeg" alt="">
                 <p class="avatext">Khoerul Anam</p>
                 <br>
@@ -125,6 +142,8 @@
             </div>
     
             <div class="card col-sm-2">
+                <p class="avatext">UI/UX</p>
+                <br>
                 <img class="avaimg mx-auto" src="assets/img/ilham.jpeg" alt="">
                 <p class="avatext">Mohammad Ilham Hanafi</p>
                 <p class="avatext">20.11.3722</p>
@@ -132,6 +151,8 @@
             </div>
 
             <div class="card col-sm-2">
+                <p class="avatext">UI/UX & Front-end</p>
+                <br>
                 <img class="avaimg mx-auto" src="assets/img/ojan.jpeg" alt="">
                 <p class="avatext">Fauzan Baehaqi</p>
                 <br>
@@ -164,9 +185,61 @@
     </script>
 </body>
 
-<div id="copyright">
-    <div class="wrapper">
-        &copy; Copyright <b>ByMamaz</b> All Rights Reserved.
-    </div>
-</div>
+<footer class="footer" style="margin-top: 250px;">
+		<div class="container">
+			<div class="row">
+				<div class="footer-col-5">
+					<img src="assets/img/icon.png" alt="" class="fa-align-left">
+					<h5 style="font-size: 50px;">ROXO-NIME</h5>
+				</div>
+				<div class="footer-col-5">
+					<ul>
+						<p style="text-indent: 30px;">
+							Roxo adalah layanan yang memungkinkan pengguna menonton tayangan Anime kesukaan di mana pun,
+							kapan pun, dan hampir lewat medium apa pun (smartphone, smartTV, tablet, PC, dan laptop).
+							Roxo ibarat toko penyewaan DVD, tetapi menawarkan film digital di dunia maya dan gratis.
+							Roxo bisa juga disamakan dengan layanan video di YouTube. Roxo bersih dari iklan, penonton
+							tak perlu menunggu jadwal penayangan serial anime di televisi, dan bisa menentukan sendiri
+							konten yang ingin dinikmati
+						</p>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div class="container">
+			<div class="row">
+				<div class="footer-col">
+					<h4>Menu</h4>
+					<ul>
+						<li><a href="#">Recent</a></li>
+						<li><a href="#">Trending</a></li>
+						<li><a href="#">New Releases</a></li>
+						<li><a href="#">Shounen</a></li>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h4>Genre</h4>
+					<ul>
+						<?php
+							$sql = "SELECT DISTINCT genre FROM genre";
+							$result = mysqli_query($conn,$sql);
+							while($row = $result->fetch_assoc()) {
+                                $genre = $row['genre'];
+								echo "<li><a href='genre.php?genre=$genre'>$genre</a></li>";
+							}
+						?>
+					</ul>
+				</div>
+				<div class="footer-col">
+					<h4>Contact</h4>
+					<p>addres :</p><br>
+					<p>Jl. Ring Road Utara, Ngringin, Condongcatur, Kec. Depok, Kabupaten Sleman, Daerah Istimewa
+						Yogyakarta 55281</p>
+				</div>
+			</div>
+		</div>
+		<div class="footer__copyright">
+			&copy; Copyright 2022 Roxo Inc.
+		</div>
+	</footer>
 </html>
