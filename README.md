@@ -1,2 +1,0 @@
-<h1>NPM INSTALL SEK</h1>
-<h1>TERUS NODE APP.JS</h1>
