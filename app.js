@@ -5,7 +5,8 @@ var express = require('express'),
     session = require('express-session'),
     cookie = require('cookie-parser')
     bodyParser = require('body-parser');
-const coba = require("./router/home");
+const home = require("./router/home"),
+login = require("./router/loginpg");
 
 app.use(express.static(path.join(__dirname,'/assets')));
 app.use('/assets',express.static(path.join(__dirname,'assets')));
@@ -20,13 +21,12 @@ app.use(express.static(path.join(__dirname,'/router')));
 app.use('/router',express.static(path.join(__dirname,'router')));
 
 app.use(bodyParser.urlencoded({ extended: true }));
-app.use(cookieParser());
+app.use(cookie());
 // set view engine to php-express
 app.set('views', './views');
 app.set('view engine', 'ejs');
-app.get('/',coba);
-app.get('/get',(req,res)=>{
-  res.send(req.cookies.coba);});
+app.use(home);
+app.use(login);
 
 app.use(cookieParser());
 app.use(

@@ -1,20 +1,15 @@
-const mysql = require('mysql');
-const query = (quer) => {   
-    var con = mysql.createPool({
+const mysql = require('mysql2/promise')
+async function query(sql) {
+    const connection = await mysql.createPool({
         host: "localhost",
         user : "root",
         password : "",
         database : "dbfp",
         connectionLimit: 10
-    })
-    con.getConnection((err,connect)=>{
-        con.query(quer,(err,result)=>{
-            const hasil = result;
-        })
-        connect.release();
-        return hasil;
-    })
+    });
+    const results = await connection.execute(sql);
+    await connection.end();
+    return results;
 }
 
-
-exports.query = query;
+module.exports = { query };
