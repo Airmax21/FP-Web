@@ -51,6 +51,7 @@ create table recent(
 
 create table theAdmin(
     id INT NOT NULL PRIMARY KEY AUTO_INCREMENT,
+    username varchar(10),
     pw VARCHAR (10)
 );
 
