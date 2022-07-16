@@ -6,7 +6,8 @@ var express = require('express'),
     cookie = require('cookie-parser')
     bodyParser = require('body-parser');
 const home = require("./router/home"),
-login = require("./router/loginpg");
+login = require("./router/loginpg"),
+register = require("./router/regpg");
 
 app.use(express.static(path.join(__dirname,'/assets')));
 app.use('/assets',express.static(path.join(__dirname,'assets')));
@@ -27,6 +28,7 @@ app.set('views', './views');
 app.set('view engine', 'ejs');
 app.use(home);
 app.use(login);
+app.use(register);
 
 app.use(cookieParser());
 app.use(
