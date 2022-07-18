@@ -38,6 +38,8 @@
     <link rel="stylesheet" href="assets/css/search.css">
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/footer.css">
+    <link rel="stylesheet" href="assets/css/like.css">
+    
 </head>
 <body>
      <!-- NAVBAR -->
@@ -137,6 +139,9 @@
                 <i class="fa fa-eye"><?php echo $watch?> views</i> 
                 <hr>
             </div>
+            <div class="fav">
+                <div class="favbtn btn-counter" data-count="0"><span>&#x2764;</span> Favorite</div>
+            </div>
             <div class="poster">
                 <img src="<?php echo $cover?>">
                 <span class="desc">
@@ -195,6 +200,19 @@
     }
     ?>
     autocomplete(document.getElementById("myInput"), search);
+    </script>
+    <script>
+        $('.btn-counter').on('click', function(event, count) {
+        event.preventDefault();
+  
+      var $this = $(this),
+      count = $this.attr('data-count'),
+      active = $this.hasClass('active'),
+      multiple = $this.hasClass('multiple-count');
+
+      $.fn.noop = $.noop;
+      $this.attr('data-count', ! active || multiple ? ++count : --count  )[multiple ? 'noop' : 'toggleClass']('active');
+    });
     </script>
 </body>
 <footer class="footer">
