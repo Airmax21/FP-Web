@@ -131,7 +131,7 @@ section #trending,
 
 .media-element {
     color: #ffffff;
-    height: 350px;
+    height: 100%;
     display: grid;
     grid-template-rows: min-content;
     gap: var(--_spacer);
@@ -348,5 +348,5 @@ footer {
     color: #fff;
     background-color: #343a40;
     padding: 10px 0px 10px 0px;
-    margin-bottom: 1rem;
+    
 }

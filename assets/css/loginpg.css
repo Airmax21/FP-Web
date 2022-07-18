@@ -48,7 +48,13 @@
     padding-bottom: 20px;
     font-size: 30px;
 }
-
+#copyright {
+  text-align: center;
+  color: #fff;
+  background-color: #343a40;
+  padding: 10px 0px 10px 0px;
+  
+}
 .btn-outline-custom-light {
     background-color: transparent;
     color: #fff;

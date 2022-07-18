@@ -15,6 +15,13 @@
     padding-right: 30px;
 
 }
+#copyright {
+    text-align: center;
+    color: #fff;
+    background-color: #343a40;
+    padding: 10px 0px 10px 0px;
+    
+}
 
 
 body {

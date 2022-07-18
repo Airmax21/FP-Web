@@ -109,7 +109,13 @@
     background-color: DodgerBlue !important; 
     color: #ffffff; 
 }
-
+#copyright {
+    text-align: center;
+    color: #fff;
+    background-color: #343a40;
+    padding: 10px 0px 10px 0px;
+    
+}
 .tv{
     position: absolute;
     top: 10%;
@@ -118,7 +124,7 @@
 .descbox{
     position: absolute;
     width: 70%;
-    top: 90%;
+    top: 95%;
     left: 3%;
 }
 .player{
