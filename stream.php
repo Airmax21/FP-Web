@@ -140,7 +140,7 @@
                 <hr>
             </div>
             <div class="fav">
-                <div class="favbtn btn-counter" data-count="0"><span>&#x2764;</span> Favorite</div>
+                <div class="favbtn btn-counter"><span>&#x2764;</span> Favorite</div>
             </div>
             <div class="poster">
                 <img src="<?php echo $cover?>">
@@ -202,11 +202,11 @@
     autocomplete(document.getElementById("myInput"), search);
     </script>
     <script>
-        $('.btn-counter').on('click', function(event, count) {
+        $('.btn-counter').on('click', function(event) {
         event.preventDefault();
   
       var $this = $(this),
-      count = $this.attr('data-count'),
+      count = $this.attr(''),
       active = $this.hasClass('active'),
       multiple = $this.hasClass('multiple-count');
 
