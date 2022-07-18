@@ -8,6 +8,7 @@
     <title>Homepage</title>
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/home.css">
+    <link rel="stylesheet" href="assets/css/search.css">
     <link rel="stylesheet" href="assets/css/footer.css">
 </head>
 <body class="bg-dark">
@@ -150,6 +151,24 @@
                     </a>
         <%})%>
     </div>
+    <% if(typeof recent !== 'undefined' && recent.length > 0) {%> 
+    <h2 class="section-title text-white">Recent</h2>
+    <div class="media-scroller snaps-inline">
+        <% recent.forEach((isi,index)=>{ %> 
+            <%if(index > 9){return}%>
+                    <a href='stream?id=<%=isi.id%>' style='text-decoration: none;'><div class='media-element'>
+                    <img src='<%=isi.CoverLandscape%>'>
+                    <div class='title'>
+                        <h4><%=isi.name%></h4>
+                        <p>Rating</p>
+                        <img src='assets/img/star2.png' class='rating' width='20px'>
+                        <h4 class='rating'><%=Math.floor(isi.rate*100)/100%></h4>
+                    </div>
+                    </div>
+                    </a>
+        <%})%>
+    </div>
+    <% } %> 
     <h2 class="section-title text-white">Romance</h2>
     <div class="media-scroller snaps-inline">
         <% romance.forEach((isi,index)=>{ %> 
@@ -160,7 +179,7 @@
                         <h4><%=isi.name%></h4>
                         <p>Rating</p>
                         <img src='assets/img/star2.png' class='rating' width='20px'>
-                        <h4 class='rating'><%=isi.rate%></h4>
+                        <h4 class='rating'><%=Math.floor(isi.rate*100)/100%></h4>
                     </div>
                     </div>
                     </a>
@@ -176,7 +195,7 @@
                         <h4><%=isi.name%></h4>
                         <p>Rating</p>
                         <img src='assets/img/star2.png' class='rating' width='20px'>
-                        <h4 class='rating'><%=isi.rate%></h4>
+                        <h4 class='rating'><%=Math.floor(isi.rate*100)/100%></h4>
                     </div>
                     </div>
                     </a>
@@ -192,7 +211,7 @@
                         <h4><%=isi.name%></h4>
                         <p>Rating</p>
                         <img src='assets/img/star2.png' class='rating' width='20px'>
-                        <h4 class='rating'><%=isi.rate%></h4>
+                        <h4 class='rating'><%=Math.floor(isi.rate*100)/100%></h4>
                     </div>
                     </div>
                     </a>
@@ -208,7 +227,7 @@
                         <h4><%=isi.name%></h4>
                         <p>Rating</p>
                         <img src='assets/img/star2.png' class='rating' width='20px'>
-                        <h4 class='rating'><%=isi.rate%></h4>
+                        <h4 class='rating'><%=Math.floor(isi.rate*100)/100%></h4>
                     </div>
                     </div>
                     </a>

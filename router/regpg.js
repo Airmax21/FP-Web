@@ -8,7 +8,7 @@ router.get('/regpg',async(req,res,next)=>{
         res.redirect('/')
     }
     else{      
-        res.render('nav',{
+        res.render('regpg',{
             genre : genre[0],
             search : search[0]
         })
@@ -22,7 +22,7 @@ router.post('/register',async(req,res,next)=>{
     search = await con.query(`SELECT name FROM video`);
     var akun = await con.query(`SELECT * FROM users WHERE username='${req.body.username}' OR email='${req.body.email}'`);
     if(akun[0].length >0){
-        res.render('nav',{
+        res.render('regpg',{
             genre : genre[0],
             search : search[0],
             output : 'Akun sudah terdaftar'
@@ -30,7 +30,7 @@ router.post('/register',async(req,res,next)=>{
     }
     else{
     var akun = await con.query(`INSERT INTO users(pw,email,username) VALUES(MD5(SHA1(AES_ENCRYPT('${req.body.pass}','R0xO'))),'${req.body.email}','${req.body.username}')`);    
-    res.render('nav',{
+    res.render('regpg',{
         genre : genre[0],
         search : search[0],
         output : 'Berhasil terdaftar'

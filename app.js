@@ -8,6 +8,8 @@ var express = require('express'),
 const home = require("./router/home"),
 login = require("./router/loginpg"),
 register = require("./router/regpg");
+list = require("./router/listpg");
+stream = require("./router/stream");
 
 app.use(express.static(path.join(__dirname,'/assets')));
 app.use('/assets',express.static(path.join(__dirname,'assets')));
@@ -29,6 +31,8 @@ app.set('view engine', 'ejs');
 app.use(home);
 app.use(login);
 app.use(register);
+app.use(list);
+app.use(stream);
 
 app.use(cookieParser());
 app.use(
