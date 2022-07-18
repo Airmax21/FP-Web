@@ -1,61 +1,34 @@
 <?php
     include 'config.php';
     session_start();
-    $output = "";
     if(isset($_SESSION['username'])){
-        header("Location:home.php");
-    }
-    if(isset($_POST['submit'])){
-        $username = $_POST['username'];
-        $pass = md5($_POST['pass']);
-        $email = $_POST['email'];
-        if($_POST['pass'] == $_POST['confirm']){
-            $sql = "SELECT * FROM users WHERE email='$email'";
-            $result = mysqli_query($conn,$sql);
-            if (!$result->num_rows > 0) {
-                $sql = "SELECT * FROM users WHERE username='$username'";
-                $result = mysqli_query($conn,$sql);
-                if (!$result->num_rows > 0) {
-                    $sql = "INSERT INTO users(pw,email,username) VALUES ('$pass','$email','$username')";
-                    $result = mysqli_query($conn,$sql);
-                    if($result){
-                        echo "<script>alert('Akun telah berhasil dibuat say!')</script>";
-                    }
-                }
-                else{
-                    $output = "Username dah terdaftar say";
-                }
-            }
-            else{
-                $output = "Email dah terdaftar say";
-            }
-        }
-        else{
-            $output = "Typo say";
+        $username = $_SESSION['username'];
+        $sql = "SELECT * FROM users WHERE username='$username' or email='$username'";
+        $result = mysqli_query($conn,$sql);
+        if($result->num_rows>0){
+            $row = $result->fetch_assoc();
+            $foto=$row['foto'];
         }
     }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register</title>
+    <title>Recent</title>
     <link rel="icon" type="image/x-icon" href="assets/img/icon.png">
-    <!-- BOOTSTRAP -->
+    <!-- bootstrap -->
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
-    <!-- CSS REG -->
-    <link rel="stylesheet" href="assets/css/regpg.css">
+    <!-- css  -->
+    <link rel="stylesheet" href="assets/css/list.css">
     <link rel="stylesheet" href="assets/css/search.css">
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/footer.css">
 </head>
 
 <body>
-    <!-- NAVBAR -->
     <nav id="navigation" class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container-fluid">
             <ul class="navbar-nav mb-2">
@@ -110,10 +83,19 @@
                 </form>
             </div>
             <div class="d-flex pp">
-                        <button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"
+                <?php
+                    if(!isset($username)){
+                        echo '<button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"
                         href="loginpg.php">SIGN IN</a> </button>
                         <button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"
-                        href="regpg.php">CREATE ACCOUNT</a> </button>
+                        href="regpg.php">CREATE ACCOUNT</a> </button>';
+                    }
+                    else{
+                        
+                        echo "<p class='navtext mx-end my-auto'>$username</p>
+                        <img class='avanav mx-end' src='$foto'><button class='btn btn-outline-danger mx-3' type='submit'><a class='text-decoration-none text-light'
+                        href='logout.php'>Log Out</a> </button> ";
+                    }
                 ?>
             <!-- <button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"
                     href="loginpg.php">SIGN IN</a> </button>
@@ -123,37 +105,64 @@
             </div>
         </div>
     </nav>
-    <!-- END NAVBAR -->
-
-
-
-    <section id="regpg" class="sec1 text-center" style="color: #fff;">
-        <div class="overlay">
-            <div class="logbox">
-                <h2>Register</h2>
-                <form method="POST">
-                    <p>Username</p>
-                    <input type="text" name="username" placeholder="Enter Username">
-                    <p>Email</p>
-                    <input type="text" name="email" placeholder="Enter Email">
-                    <p>Password</p>
-                    <input type="password" name="pass" placeholder="******">
-                    <p>Password Confirmation</p>
-                    <input type="password" name="confirm" placeholder="******">
-                    <h5 class="text-danger"><?php echo $output;?></h5>
-                    <p class="textkecil">Dengan membuat akun berarti anda setuju dengan <a class="textkecil" href="term.php">KEBIJAKAN KAMI</a></p>
-                    <input type="submit" name="submit" value="Sign Up">
-                </form>
+    <!-- GENRE LIST-->
+    <section class="product spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-8">
+                    <!-- ACTION -->
+                    <section id="action">
+                        <div class="action__product" style="text-decoration: none;">
+                            <div class="row">
+                                <div class="col-lg-8 col-md-8 col-sm-8">
+                                    <div class="section-title">
+                                        <h4>NEW RELEASES</h4>
+                                        <hr style="color: white;" width="850">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <?php
+                                    $sql = "SELECT * FROM video ORDER BY upload DESC";
+                                    $result = mysqli_query($conn,$sql);
+                                    if($result->num_rows>0){
+                                        while($row = $result->fetch_assoc()){
+                                            $id = $row['id'];
+                                            $name = $row['name'];
+                                            $watch = $row['watch'];
+                                            $cover = $row['CoverPotrait'];
+                                            $rating = $row['rate'];
+                                            echo "<div class='col-lg-4 col-md-6 col-sm-6'>
+                                            <a href='stream.php?id=$id'><div class='product__item'>
+                                                <div class='product__item__pic set-bg'>
+                                                    <img src='$cover' width='229' height='325'>
+                                                    <div class='comment'><i class='fa fa-comments'></i>$rating</div>
+                                                    <div class='view'><i class='fa fa-eye'></i> $watch</div>
+                                                </div>
+                                                <div class='product__item__text'>
+                                                    <h5><a href='#'>$name</a></h5>
+                                                </div>
+                                            </div></a>
+                                        </div>";
+                                        }
+                                    }
+                                ?>
+                            </div>
+                        </div>
+                    </section>
+                </div>
             </div>
         </div>
-    </section>
+        </div>
+        <!-- END GENRE LIST -->
 
-    <!-- JAVASCRIPT -->
-    <script src="assets/js/bootstrap.min.js"></script>
-    <script src="assets/js/jquery.js"></script>
-    <script src="assets/js/navbar.js"></script>
-    <script src="assets/js/search.js"></script>
-    <script>
+        <!-- JS -->
+        <script src="assets/js/bootstrap.min.js"></script>
+        <script src="assets/js/jquery.js"></script>
+        <script src="assets/js/navbar.js"></script>
+        <script src="assets/js/search.js"></script>
+        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script>
         var search = [];
         <?php
     $sql = "SELECT name FROM video";

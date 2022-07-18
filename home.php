@@ -2,6 +2,9 @@
     include 'config.php';
     session_start();
     if(isset($_SESSION['username'])){
+        if($_SESSION['username'] == "admin"){
+            header("Location:./admin/user.php");
+        }
         $username = $_SESSION['username'];
         $sql = "SELECT * FROM users WHERE username='$username' or email='$username'";
         $result = mysqli_query($conn,$sql);
@@ -23,7 +26,7 @@
     <title>Homepage</title>
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/home.css">
-
+    <link rel="stylesheet" href="assets/css/footer.css">
 </head>
 
 <body class="bg-dark">
@@ -82,7 +85,7 @@
                     <input type="submit" name="searchsub" hidden>
                 </form>
             </div>
-            <div class="d-flex pp">
+            <div class="d-flex pp dropdown ">
                 <?php
                     if(!isset($username)){
                         echo '<button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"
@@ -91,16 +94,19 @@
                         href="regpg.php">CREATE ACCOUNT</a> </button>';
                     }
                     else{
-                        
-                        echo "<p class='navtext mx-end my-auto'>$username</p>
-                        <img class='avanav mx-end' src='$foto'>";
+                        echo "<p class='navtext mx-end my-auto'>$username</p>'
+                        <img class='avanav mx-end' src='$foto'>
+                        <button class='btn btn-outline-danger mx-3' type='submit'><a class='text-decoration-none text-light'
+                        href='logout.php'>Log Out</a> </button>  
+                        ";
                     }
                 ?>
+                
             <!-- <button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"
                     href="loginpg.php">SIGN IN</a> </button>
             <button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"
                     href="regpg.php">CREATE ACCOUNT</a> </button> -->
-                    
+                          
             </div>
         </div>
     </nav>
@@ -235,36 +241,6 @@
     </div>
     <!-- END NEW RELEASES -->
     <!-- RECENT -->
-    <h2 class="section-title text-white" <?php
-        if(!isset($_SESSION['username'])) echo 'hidden';?>>RECENT</h2>
-    <div class="media-scroller snaps-inline" <?php
-        if(!isset($_SESSION['username'])) echo 'hidden';?>>
-        <?php
-            if(isset($_SESSION['username'])){
-            
-            $sql = "SELECT * FROM video WHERE id IN (SELECT movieID FROM recent WHERE id='$username' ORDER BY lasttime DESC);";
-            $result = mysqli_query($conn,$sql);
-            if($result->num_rows>0){
-                $batas = 0;
-                while($row = $result->fetch_assoc() and $batas <= 10){
-                    $foto = $row['CoverLandscape'];
-                    $judul = $row['name'];
-                    $rating = $row['rating'];
-                    echo "<a href='stream.php?id=$id'style='text-decoration: none;'><div class='media-element'>
-                    <img src='$foto'>
-                    <div class='title'>
-                        <h4>$judul</h4>
-                        <p>rating</p>
-                        <img src='assets/img/star2.png' class='rating' width='20px'>
-                        <h4 class='rating'>$rating</h4>
-                    </div>
-                    </div></a>";
-                    $batas+=1;
-                }
-            }
-        }
-        ?>     
-    </div>
     <!-- END RECENT -->
 
     <!-- Romance -->
