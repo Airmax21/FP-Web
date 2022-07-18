@@ -44,6 +44,10 @@ app.use(
   })
 )
 
-var server = app.listen(3000, function () {
+<<<<<<< HEAD
+var server = app.listen(process.env.PORT || 3000, function () {
+=======
+var server = app.listen(80, function () {
+>>>>>>> 16087067b367c65b2f5a42436d8f498a89d52e38
   console.log("Server sudah berjalan");
 });
