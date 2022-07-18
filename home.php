@@ -1,9 +1,6 @@
 <?php
     include 'config.php';
     session_start();
-    if($_SESSION['username'] == "admin"){
-        header("Location:./admin/user.php");
-    }
     if(isset($_SESSION['username'])){
         $username = $_SESSION['username'];
         $sql = "SELECT * FROM users WHERE username='$username' or email='$username'";
@@ -26,7 +23,7 @@
     <title>Homepage</title>
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/home.css">
-    <link rel="stylesheet" href="assets/css/footer.css">
+
 </head>
 
 <body class="bg-dark">
@@ -85,7 +82,7 @@
                     <input type="submit" name="searchsub" hidden>
                 </form>
             </div>
-            <div class="d-flex pp dropdown ">
+            <div class="d-flex pp">
                 <?php
                     if(!isset($username)){
                         echo '<button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"
@@ -94,19 +91,16 @@
                         href="regpg.php">CREATE ACCOUNT</a> </button>';
                     }
                     else{
-                        echo "<p class='navtext mx-end my-auto'>$username</p>'
-                        <img class='avanav mx-end' src='$foto'>
-                        <button class='btn btn-outline-danger mx-3' type='submit'><a class='text-decoration-none text-light'
-                        href='logout.php'>Log Out</a> </button>  
-                        ";
+                        
+                        echo "<p class='navtext mx-end my-auto'>$username</p>
+                        <img class='avanav mx-end' src='$foto'>";
                     }
                 ?>
-                
             <!-- <button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"
                     href="loginpg.php">SIGN IN</a> </button>
             <button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"
                     href="regpg.php">CREATE ACCOUNT</a> </button> -->
-                          
+                    
             </div>
         </div>
     </nav>

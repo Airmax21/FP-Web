@@ -14,19 +14,15 @@
             $row = mysqli_fetch_assoc($result);
             $_SESSION['username'] = $row['username'];
             header("Location:home.php");
-            die();
         }
         else{
             $sql = "SELECT * FROM theadmin WHERE (username='$email') AND pw='$pass';";
             $result = mysqli_query($conn,$sql);
-            if($result->num_rows > 0){
+            if($result->num_rows>0){
                 $_SESSION['username'] = "admin";
                 header("Location:admin/user.php");
-                die();
             }
-            else{
             $output = "Username atau password salah yang";
-            }
         }
     }
 ?>
@@ -42,10 +38,9 @@
     <link rel="stylesheet" href="assets/bootstrap/bootstrap.min.css">
     <link rel="stylesheet" href="assets/css/regpg.css">
     <link rel="stylesheet" href="assets/css/search.css">
-    <link rel="stylesheet" href="assets/css/navbar.css">
-    <link rel="stylesheet" href="assets/css/footer.css">
+    
 </head>
-<body>
+<body> 
      <!-- NAVBAR -->
      <nav id="navigation" class="navbar navbar-expand-lg navbar-dark fixed-top">
         <div class="container-fluid">

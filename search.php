@@ -26,8 +26,6 @@
     <!-- css  -->
     <link rel="stylesheet" href="assets/css/list.css">
     <link rel="stylesheet" href="assets/css/search.css">
-    <link rel="stylesheet" href="assets/css/navbar.css">
-    <link rel="stylesheet" href="assets/css/footer.css">
 </head>
 
 <body>
@@ -95,8 +93,7 @@
                     else{
                         
                         echo "<p class='navtext mx-end my-auto'>$username</p>
-                        <img class='avanav mx-end' src='$foto'><button class='btn btn-outline-danger mx-3' type='submit'><a class='text-decoration-none text-light'
-                        href='logout.php'>Log Out</a> </button> ";
+                        <img class='avanav mx-end' src='$foto'>";
                     }
                 ?>
             <!-- <button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"

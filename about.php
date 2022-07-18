@@ -25,8 +25,6 @@
     <!-- CSS -->
     <link rel="stylesheet" href="assets/css/home.css">
     <link rel="stylesheet" href="assets/css/search.css">
-    <link rel="stylesheet" href="assets/css/navbar.css">
-    <link rel="stylesheet" href="assets/css/footer.css">
 
 </head>
 
@@ -97,8 +95,7 @@
                     else{
                         
                         echo "<p class='navtext mx-end my-auto'>$username</p>
-                        <img class='avanav mx-end' src='$foto'><button class='btn btn-outline-danger mx-3' type='submit'><a class='text-decoration-none text-light'
-                        href='logout.php'>Log Out</a> </button> ";
+                        <img class='avanav mx-end' src='$foto'>";
                     }
                 ?>
             <!-- <button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"
@@ -115,7 +112,6 @@
     <div class="container-fluid">
         <div class="row px-1 link__ig d-flex" style="justify-content: center;">
             <div class="card col-sm-2">
-                <p class="avatext">Front-end & Database</p>
                 <img class="avaimg mx-auto" src="assets/img/zilan.JPG" alt="">
                 <p class="avatext">Muhammad Zhillan Zaini</p>
                 <p class="avatext">20.11.3678</p>
@@ -123,8 +119,6 @@
             </div>
         
             <div class="card col-sm-2">
-                <p class="avatext">Back-end</p>
-                <br>
                 <img class="avaimg mx-auto iqb" src="assets/img/iqbal.jpeg" alt="">
                 <p class="avatext">Ahmad Iqbal Agyan</p>
                 <br>
@@ -133,7 +127,6 @@
             </div>
     
             <div class="card col-sm-2">
-                <p class="avatext">Front-end & Typewriter</p>
                 <img class="avaimg mx-auto" src="assets/img/anam.jpeg" alt="">
                 <p class="avatext">Khoerul Anam</p>
                 <br>
@@ -142,8 +135,6 @@
             </div>
     
             <div class="card col-sm-2">
-                <p class="avatext">UI/UX</p>
-                <br>
                 <img class="avaimg mx-auto" src="assets/img/ilham.jpeg" alt="">
                 <p class="avatext">Mohammad Ilham Hanafi</p>
                 <p class="avatext">20.11.3722</p>
@@ -151,8 +142,6 @@
             </div>
 
             <div class="card col-sm-2">
-                <p class="avatext">UI/UX & Front-end</p>
-                <br>
                 <img class="avaimg mx-auto" src="assets/img/ojan.jpeg" alt="">
                 <p class="avatext">Fauzan Baehaqi</p>
                 <br>
@@ -185,7 +174,7 @@
     </script>
 </body>
 
-<footer class="footer" style="margin-top: 250px;">
+<footer class="footer">
 		<div class="container">
 			<div class="row">
 				<div class="footer-col-5">

@@ -1,7 +1,7 @@
 <?php
     include 'config.php';
-    $genre = $_GET['genre'];
     session_start();
+    $genre = $_GET['genre'];
     if(isset($_SESSION['username'])){
         $username = $_SESSION['username'];
         $sql = "SELECT * FROM users WHERE username='$username' or email='$username'";
@@ -26,8 +26,6 @@
     <!-- css  -->
     <link rel="stylesheet" href="assets/css/list.css">
     <link rel="stylesheet" href="assets/css/search.css">
-    <link rel="stylesheet" href="assets/css/navbar.css">
-    <link rel="stylesheet" href="assets/css/footer.css">
 </head>
 
 <body>
@@ -86,7 +84,6 @@
                 </form>
             </div>
             <div class="d-flex pp">
-                
                 <?php
                     if(!isset($username)){
                         echo '<button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"
@@ -97,10 +94,7 @@
                     else{
                         
                         echo "<p class='navtext mx-end my-auto'>$username</p>
-                        <img class='avanav mx-end' src='$foto'>
-                        <button class='btn btn-outline-danger mx-3' type='submit'><a class='text-decoration-none text-light'
-                        href='logout.php'>Log Out</a> </button> ";
-                        
+                        <img class='avanav mx-end' src='$foto'>";
                     }
                 ?>
             <!-- <button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"

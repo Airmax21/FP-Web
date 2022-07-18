@@ -3,11 +3,11 @@
     session_start();
     if(isset($_SESSION['username'])){
         $username = $_SESSION['username'];
-        $sql = "SELECT * FROM users WHERE username='$username' or email='$username'";
+        $sql = "SELECT * FROM users WHERE username='$username'";
         $result = mysqli_query($conn,$sql);
         if($result->num_rows>0){
             $row = $result->fetch_assoc();
-            $foto=$row['foto'];
+            $id = $row['id'];
         }
     }
     else{
@@ -31,8 +31,6 @@
     <!-- css  -->
     <link rel="stylesheet" href="assets/css/list.css">
     <link rel="stylesheet" href="assets/css/search.css">
-    <link rel="stylesheet" href="assets/css/navbar.css">
-    <link rel="stylesheet" href="assets/css/footer.css">
 </head>
 
 <body>
@@ -100,8 +98,7 @@
                     else{
                         
                         echo "<p class='navtext mx-end my-auto'>$username</p>
-                        <img class='avanav mx-end' src='$foto'><button class='btn btn-outline-danger mx-3' type='submit'><a class='text-decoration-none text-light'
-                        href='logout.php'>Log Out</a> </button> ";
+                        <img class='avanav mx-end' src='$foto'>";
                     }
                 ?>
             <!-- <button class="btn btn-outline-custom-light" type="submit"><a class="text-decoration-none text-light"
