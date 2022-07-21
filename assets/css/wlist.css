@@ -1,0 +1,45 @@
+.wlbtn {
+    background-color: #dbdbdb;
+    border-color: #bbb;
+    color: #666;
+    border-radius: 5px;
+    width: 115px;
+    margin-top: 5px;
+}
+.wlbtn:hover, .wlbtn.active {
+    text-shadow: 0 1px 0 #b12f27;
+    background-color: #f64136;
+    border-color: #b12f27;
+}
+.wlbtn:active { 
+    box-shadow: 0 0 5px 3px rgba(0,0,0,0.2) inset; 
+}
+.wlbtn span { 
+    color: #f64136; 
+}
+.wlbtn:hover, .wlbtn:hover span,
+.wlbtn.active, .wlbtn.active span { 
+    color: #eeeeee; 
+}
+.wlbtn:active span {
+    color: #b12f27;
+    text-shadow: 0 1px 0 rgba(255,255,255,0.3);
+}
+
+.btn-counter{
+    float: right;
+}
+
+.btn-counter:after,.btn-counter:hover:after { 
+    text-shadow: none; 
+}
+
+.btn-counter:after {
+  padding: 8px;
+  content: attr();
+}
+
+.btn-counter:before {
+  transform: rotate(45deg);
+  content: '';
+}
