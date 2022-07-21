@@ -39,6 +39,7 @@
     <link rel="stylesheet" href="assets/css/navbar.css">
     <link rel="stylesheet" href="assets/css/footer.css">
     <link rel="stylesheet" href="assets/css/like.css">
+    <link rel="stylesheet" href="assets/css/wlist.css">
     
 </head>
 <body>
@@ -141,6 +142,9 @@
             </div>
             <div class="fav">
                 <div class="favbtn btn-counter"><span>&#x2764;</span> Favorite</div>
+            </div>
+            <div class="wlist">
+                <div class="wlbtn btn-counter"><span>&#x2b;</span> Watchlist</div>
             </div>
             <div class="poster">
                 <img src="<?php echo $cover?>">
